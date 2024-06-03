@@ -1,0 +1,17 @@
+body{
+  background-color: #24353F;
+  color: white;
+}
+
+input{
+  color: white !important ;
+  background-color: #24353F !important;
+  border: 1px solid #ced4da;
+  
+}
+h1{
+   color: rgb(23, 162, 184, 1);
+}
+::placeholder{
+  color: #ced4da !important;
+}
