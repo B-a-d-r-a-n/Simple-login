@@ -114,8 +114,11 @@ function Validation(ele) {
 var username = localStorage.getItem("sessionUsername");
 if (username) {
   var currentPage = document.querySelector("title").textContent;
-  if (currentPage !== "Welcome") {
-    window.location.href = "Welcome.html";
+  if (currentPage === "Welcome") {
+    history.pushState(null, null, null);
+    window.addEventListener("popstate", function (event) {
+      history.pushState(null, null, null);
+    });
   }
 }
 if (username) {
