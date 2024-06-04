@@ -115,9 +115,9 @@ var username = localStorage.getItem("sessionUsername");
 if (username) {
   var currentPage = document.querySelector("title").textContent;
   if (currentPage === "Welcome") {
-    history.pushState(null, null, null);
+    history.replaceState(null, null, null);
     window.addEventListener("popstate", function (event) {
-      history.pushState(null, null, null);
+      history.replaceState(null, null, null);
     });
   } else {
     window.location.href = "Welcome.html";
