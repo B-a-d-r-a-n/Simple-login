@@ -70,7 +70,7 @@ function signInUser() {
       uEmail: userInEmail.value,
       uPassword: userInPassword.value,
     };
-    if ((usersList = [])) {
+    if (localStorage.getItem("users") == null) {
       inMsg.innerHTML =
         '<span class="p-2 text-danger">Please register first</span>';
     } else {
