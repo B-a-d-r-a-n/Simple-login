@@ -84,6 +84,8 @@ function signInUser() {
           localStorage.setItem("sessionUsername", usersList[i].uName);
           window.location.href = "Welcome.html";
           inMsg.innerHTML = '<span class="text-danger m-3">Welcome!</span>';
+          backBtnBoom();
+          preventBack();
           break;
         } else {
           inMsg.innerHTML =
@@ -110,10 +112,15 @@ function Validation(ele) {
     return false;
   }
 }
+
 function backBtnBoom() {
-  history.replaceState(null, null, null);
+  setTimeout(function () {
+    history.replaceState(null, null, null, null, null);
+  }, 300);
   window.addEventListener("popstate", function (event) {
-    history.replaceState(null, null, null);
+    setTimeout(function () {
+      history.replaceState(null, null, null, null, null);
+    }, 300);
   });
 }
 
@@ -121,10 +128,8 @@ var username = localStorage.getItem("sessionUsername");
 if (username) {
   var currentPage = document.querySelector("title").textContent;
   if (currentPage === "Welcome") {
-    history.replaceState(null, null, null);
-    window.addEventListener("popstate", function (event) {
-      history.replaceState(null, null, null);
-    });
+    backBtnBoom();
+    preventBack();
   } else {
     window.location.href = "Welcome.html";
   }
@@ -132,7 +137,13 @@ if (username) {
 if (username) {
   welcomeUser.innerHTML = "Welcome " + username;
 }
-
+function preventBack() {
+  window.history.forward();
+}
+setTimeout(preventBack(), 0);
+window.onunload = function () {
+  null;
+};
 function logout() {
   localStorage.removeItem("sessionUsername");
 }
