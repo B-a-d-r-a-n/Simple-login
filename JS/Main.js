@@ -112,10 +112,12 @@ function Validation(ele) {
 }
 
 var username = localStorage.getItem("sessionUsername");
-if (username && !window.location.href.includes("Welcome.html")) {
-  window.location.href = "Welcome.html";
+if (username) {
+  var currentPage = document.querySelector("title").textContent;
+  if (currentPage !== "Welcome") {
+    window.location.href = "Welcome.html";
+  }
 }
-
 if (username) {
   welcomeUser.innerHTML = "Welcome " + username;
 }
