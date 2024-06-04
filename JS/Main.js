@@ -84,8 +84,7 @@ function signInUser() {
           localStorage.setItem("sessionUsername", usersList[i].uName);
           window.location.href = "Welcome.html";
           inMsg.innerHTML = '<span class="text-danger m-3">Welcome!</span>';
-          backBtnBoom();
-          preventBack();
+
           break;
         } else {
           inMsg.innerHTML =
@@ -113,23 +112,11 @@ function Validation(ele) {
   }
 }
 
-function backBtnBoom() {
-  setTimeout(function () {
-    history.replaceState(null, null, null, null, null);
-  }, 300);
-  window.addEventListener("popstate", function (event) {
-    setTimeout(function () {
-      history.replaceState(null, null, null, null, null);
-    }, 300);
-  });
-}
-
 var username = localStorage.getItem("sessionUsername");
 if (username) {
   var currentPage = document.querySelector("title").textContent;
   if (currentPage === "Welcome") {
     backBtnBoom();
-    preventBack();
   } else {
     window.location.href = "Welcome.html";
   }
@@ -137,10 +124,10 @@ if (username) {
 if (username) {
   welcomeUser.innerHTML = "Welcome " + username;
 }
-function preventBack() {
+function backBtnBoom() {
   window.history.forward();
 }
-setTimeout(preventBack(), 0);
+setTimeout(backBtnBoom(), 0);
 window.onunload = function () {
   null;
 };
