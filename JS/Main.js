@@ -110,6 +110,12 @@ function Validation(ele) {
     return false;
   }
 }
+function backBtnBoom() {
+  history.replaceState(null, null, null);
+  window.addEventListener("popstate", function (event) {
+    history.replaceState(null, null, null);
+  });
+}
 
 var username = localStorage.getItem("sessionUsername");
 if (username) {
