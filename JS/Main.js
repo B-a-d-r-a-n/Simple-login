@@ -54,7 +54,7 @@ function signUpUser() {
       usersList.push(user);
       localStorage.setItem("users", JSON.stringify(usersList));
       upMsg.innerHTML = `<span class="text-danger m-3">Success</span>`;
-      window.location.href = "index.html";
+      window.location.href = "/index.html";
     } else {
       upMsg.innerHTML = `<span class="text-danger m-3">Email is invalid</span>`;
     }
@@ -77,7 +77,7 @@ function signInUser() {
           signInInfo.uPassword.toLowerCase()
       ) {
         localStorage.setItem("sessionUsername", usersList[i].uName);
-        window.location.href = "Welcome.html";
+        window.location.href = "/Welcome.html";
         inMsg.innerHTML = '<span class="text-danger m-3">Welcome!</span>';
         break;
       } else {
@@ -106,8 +106,8 @@ function Validation(ele) {
 }
 
 var username = localStorage.getItem("sessionUsername");
-if (username && !window.location.href.includes("Welcome.html")) {
-  window.location.href = "Welcome.html";
+if (username && !window.location.href.includes("/Welcome.html")) {
+  window.location.href = "/Welcome.html";
 }
 
 if (username) {
