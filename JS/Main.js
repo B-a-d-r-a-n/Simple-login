@@ -41,7 +41,7 @@ function isEmailExist() {
 function signUpUser() {
   if (upInputsFull() == false) {
     upMsg.innerHTML =
-      '<span class="text-danger m-3">All inputs is required</span>';
+      '<span class="text-danger m-3">All inputs are required</span>';
   } else {
     var user = {
       uName: userUpName.value,
@@ -54,7 +54,7 @@ function signUpUser() {
       usersList.push(user);
       localStorage.setItem("users", JSON.stringify(usersList));
       upMsg.innerHTML = `<span class="text-danger m-3">Success</span>`;
-      window.location.href = "/index.html";
+      window.location.href = "index.html";
     } else {
       upMsg.innerHTML = `<span class="text-danger m-3">Email is invalid</span>`;
     }
@@ -64,25 +64,31 @@ function signUpUser() {
 function signInUser() {
   if (inInputsFull() == false) {
     inMsg.innerHTML =
-      '<span class="text-danger m-3">All inputs is required</span>';
+      '<span class="text-danger m-3">All inputs are required</span>';
   } else {
     var signInInfo = {
       uEmail: userInEmail.value,
       uPassword: userInPassword.value,
     };
-    for (var i = 0; i < usersList.length; i++) {
-      if (
-        usersList[i].uEmail.toLowerCase() == signInInfo.uEmail.toLowerCase() &&
-        usersList[i].uPassword.toLowerCase() ==
-          signInInfo.uPassword.toLowerCase()
-      ) {
-        localStorage.setItem("sessionUsername", usersList[i].uName);
-        window.location.href = "/Welcome.html";
-        inMsg.innerHTML = '<span class="text-danger m-3">Welcome!</span>';
-        break;
-      } else {
-        inMsg.innerHTML =
-          '<span class="p-2 text-danger">incorrect email or password</span>';
+    if ((usersList = [])) {
+      inMsg.innerHTML =
+        '<span class="p-2 text-danger">Please register first</span>';
+    } else {
+      for (var i = 0; i < usersList.length; i++) {
+        if (
+          usersList[i].uEmail.toLowerCase() ==
+            signInInfo.uEmail.toLowerCase() &&
+          usersList[i].uPassword.toLowerCase() ==
+            signInInfo.uPassword.toLowerCase()
+        ) {
+          localStorage.setItem("sessionUsername", usersList[i].uName);
+          window.location.href = "Welcome.html";
+          inMsg.innerHTML = '<span class="text-danger m-3">Welcome!</span>';
+          break;
+        } else {
+          inMsg.innerHTML =
+            '<span class="p-2 text-danger">incorrect email or password</span>';
+        }
       }
     }
   }
@@ -106,8 +112,8 @@ function Validation(ele) {
 }
 
 var username = localStorage.getItem("sessionUsername");
-if (username && !window.location.href.includes("/Welcome.html")) {
-  window.location.href = "/Welcome.html";
+if (username && !window.location.href.includes("Welcome.html")) {
+  window.location.href = "Welcome.html";
 }
 
 if (username) {
