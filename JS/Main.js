@@ -119,6 +119,8 @@ if (username) {
     window.addEventListener("popstate", function (event) {
       history.pushState(null, null, null);
     });
+  } else {
+    window.location.href = "Welcome.html";
   }
 }
 if (username) {
